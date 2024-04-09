@@ -1,0 +1,31 @@
+
+
+
+
+
+Comandi per git: 
+
+git config --global user.name "Il Tuo Nome"
+git config --global user.email "latuaemail@example.com"
+
+Creiamo una nuova repository
+git init
+
+Clonare un repository esistente
+git clone url_repository
+
+aggiungere file al tracking
+git add nome_del_file
+
+per aggiungere tutti i file modificati
+git add .
+
+git commit -m "Messaggio che descrive il commit"
+
+aggiungere erepository remoto 
+git remote add origin url_del_repository_remoto
+
+pubblicare le tue modifiche locali su un repository remoto
+git push origin nome_del_branch
+
+token: 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

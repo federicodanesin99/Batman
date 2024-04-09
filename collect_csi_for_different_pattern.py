@@ -14,7 +14,7 @@ import broadcom_csimond as bsci
 import collect_data_from_board as cdata
 import shutil
 from csi import *
-sys.path.append("/Users/federicodanesin/Downloads/Batman")
+sys.path.append("//Users/federicodanesin/Desktop/UNIVERSITA/INTERSHIPandTHESIS/Batman")
 from adant.decode import read_dump
 import pattern_feature as pf
 import tensorflow as tf
@@ -72,7 +72,7 @@ for pn in pattern:
     pattern_features[name_obj] = pf.Patternfeature(x, csi_time, dump)
     
 #%% Load dump already got from the test 
-folder= "/Users/federicodanesin/Downloads/Batman"
+folder= "/Users/federicodanesin/Desktop/UNIVERSITA/INTERSHIPandTHESIS/Batman"
 for pn in pattern: 
     print(f"test pattern : {pn}")
     
@@ -139,7 +139,7 @@ import matplotlib.pyplot as plt
 
 # Caricamento dei dati
 # Supponiamo che 'data.csv' sia il tuo file di dati
-df = pd.read_csv('path/to/your/data.csv')
+df = pf0.adant_dump
 
 # Calcolo della matrice di correlazione
 correlation_matrix = df.corr()
@@ -167,11 +167,9 @@ dataset_list = [dataset_0,dataset_1]
 combined_dataset = dataset_list[0]
 for dataset in dataset_list[1:]:
     combined_dataset = combined_dataset.concatenate(dataset)
-
 buffer_size = 10000  # Modifica la dimensione del buffer secondo le tue esigenze
 # Permuta casualmente i dati nel dataset combinato
 shuffled_dataset = combined_dataset.shuffle(buffer_size)
-
 
 # Ora puoi utilizzare il dataset per iterare attraverso i dati etichettati
 for data, label in shuffled_dataset:

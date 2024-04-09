@@ -29,11 +29,19 @@ class Patternfeature:
         real_part = tf.math.real(self.csi_list)
         imag_part = tf.math.imag(self.csi_list)
         self.separate_csi_list = tf.stack([real_part,imag_part], axis=0)
-        
-        lab = [self.pattern_id] * (len(self.csi_list))
+        tensor_transposed = tf.transpose(self.separate_csi_list, [1, 0, 2, 3])
+        tensor_reshaped = tf.reshape(tensor_transposed, [92, 2, 4, 60])
+        self.labels = [self.pattern_id] * (len(self.separate_csi_list[1]))
         # Creare un dataset a partire dal tuo array di etichette
-        self.labels = tf.data.Dataset.from_tensor_slices(lab)
-        self.data = tf.data.Dataset.from_tensor_slices(self.separate_csi_list)
-        label_dataset = tf.data.Dataset.from_tensor_slices((self.separate_csi_list,tf.convert_to_tensor(lab)))
+        self.label_dataset = tf.data.Dataset.from_tensor_slices((tensor_reshaped,self.labels))
         # funzione di estrazione feature
     
+    def normalize_tensor(self):
+        mean = tf.reduce_mean(tensor, axis=0)
+        stddev = tf.math.reduce_std(tensor, axis=0)
+        # Normalizzazione standard
+        normalized_tensor = (tensor - mean) / stddev
+        print("Tensor originale:")
+        print(tensor)
+        print("\nTensor normalizzato:")
+        print(normalized_tensor)
